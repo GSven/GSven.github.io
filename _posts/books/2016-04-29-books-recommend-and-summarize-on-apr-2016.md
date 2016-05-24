@@ -8,17 +8,7 @@ description: the more you read, the more you think, better you'll be.
 
 ## 写在前面
 
-计划是每月读 5-10 本书，书籍类型大概是三个方面的：金融，技术，管理。之所以选择这三个方面，一方面是因为自己对这三个方面都很有兴趣，其次是被 linkedin 创始人 Hoffman 的 [ABZ 理论](http://techcrunch.com/2012/02/14/in-startups-and-life-you-need-plan-a-b-and-z/) 深度影响。建议大家都看看 abz 理论那篇文章，如果我有空，也会整理一些常用的这类理论模型到博客里的。
-
-月底读书总结的形式都很简单，只是简单的一个列表和简单的书评，对觉得比较好的书会有单独的读书笔记。另外推荐大家用 excel 来做一些简单的工作管理，我现在就用 google docs 来做工作安排和读书计划，个人感觉比一些常用的神马协同软件强大太多了，简单，够用，就行了。工作中见过太多人把时间都花到使用那些协同软件上去，不得不说避重就轻了，适得其反，哈哈。
-
-下面是一张我用 google docs 来做本月读书安排的截图，不同颜色代表不同类别的数据，清晰明了实用。
-
-![book-reading-04.png](../images/book-reading-04.png)
-
-本月看了 11 本书，其中第十本是一些研报的合集，就当是一本了；第十一本是 coursera 上的一门公开课 *Successful Negotiation: Essential Strategies and Skills*，也当是一本书了。其中有电子书版的都放到亲爱的[度娘云](http://pan.baidu.com/s/1boRIG5T)里了，个人觉得不错的书都是纸板的，不知道有没有电子版的，推荐好书都看纸版的。
-
-ps: 我对好书的定义很简单：
+ 我对好书的定义很简单：
 
 - 给自己有所启发的
 - 高质量的，专业的教程类书籍
@@ -27,7 +17,7 @@ ps: 我对好书的定义很简单：
 - 留着给儿子看的书 [好吧，目前我只有个宝贝侄儿，哈哈]
 - 最后一条，印刷质量要好
 
-上月读书总结：[『 读书笔记 』3月读书总结和推荐](../books-recommend-and-summarize-on-mar-2016)
+
 
 ## 1. 读书总结
 
@@ -186,7 +176,3 @@ ps: 我对好书的定义很简单：
 ### 2.16 [Hadoop家族学习路线图](http://blog.fens.me/hadoop-family-roadmap/)
 
 
-## 3. 读书总结系列
-
-- [『 读书笔记 』3月读书总结和推荐](../books-recommend-and-summarize-on-mar-2016)
-- [『 读书笔记 』4月读书总结｜博文推荐](../books-recommend-and-summarize-on-apr-2016)

@@ -8,6 +8,7 @@ description: know more, do better
 ## 写在前面
 
 本系列是综合了自己在学习android过程中的理解记录 
+
 ## 1. 读书总结
 
 ### 1.1 [Learning Spark](https://www.amazon.cn/%E5%AD%A6%E4%B9%A0Spark-%E5%8D%A1%E5%8A%B3/dp/B016OFNU9M/ref=sr_1_1?ie=UTF8&qid=1460795691&sr=8-1&keywords=learning+spark)

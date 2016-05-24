@@ -1,7 +1,7 @@
 ---
 layout: post
 published: true
-title: 『 Adnroid 』 安卓笔记
+title: 『 Android 』 安卓笔记
 description: know more, do better 
 ---  
 

@@ -40,7 +40,7 @@ var duoshuoQuery = {short_name:"jiangwei"};
 	(function() {
 		var ds = document.createElement('script');
 		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		//ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
 		ds.charset = 'UTF-8';
 		(document.getElementsByTagName('head')[0] 
 		 || document.getElementsByTagName('body')[0]).appendChild(ds);
@@ -50,7 +50,7 @@ var duoshuoQuery = {short_name:"jiangwei"};
   </div>
 <!-- 多说公共JS代码 end -->
 <!--多说分享功能代码 start-->
-<div class="ds-share" data-thread-key="{{ page.url }}" data-title="{{ page.title }}" data-images="{{ page.url }}" data-content="{{ post.content | xml_escape }}" data-url="{{ page.url }}">
+<div class="ds-share" data-thread-key="{{ page.url }}" data-title="{{ page.title }}" data-images="{{ page.url }}" data-content=" content" data-url="http://GSven.github.io/{{ page.url }}">
     <div class="ds-share-aside-left">
       <div class="ds-share-aside-inner">
       </div>

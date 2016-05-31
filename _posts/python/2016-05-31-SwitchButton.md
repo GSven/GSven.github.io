@@ -1,16 +1,23 @@
-#自定义switchButton#
+---
+layout: post
+published: true
+title: 『 Android 』 自定义switchButton
+description: know more, do better 
+---  
+
+# 自定义switchButton #
 
 **good good study,day day up!**
 
 ![效果图](https://github.com/GSven/GSven.github.io/raw/master/gif/img_kaiguan.gif)
 
-![示例图](https://github.com/GSven/GSven.github.io/raw/master/images/img_kai.jpg)
+![示例图](https://github.com/GSven/GSven.github.io/raw/master/images/img_kai.png)
 
-![示例图1](https://github.com/GSven/GSven.github.io/raw/master/images/img_kai1.jpg)
+![示例图1](https://github.com/GSven/GSven.github.io/raw/master/images/img_kai1.png)
 
-![示例图2](https://github.com/GSven/GSven.github.io/raw/master/images/img_kai2.jpg)
+![示例图2](https://github.com/GSven/GSven.github.io/raw/master/images/img_kai2.png)
 
-![示例图3](https://github.com/GSven/GSven.github.io/raw/master/images/img_kai3.jpg)
+![示例图3](https://github.com/GSven/GSven.github.io/raw/master/images/img_kai3.png)
 
 *分析*
 
@@ -59,7 +66,8 @@
 `/**
  * Created by Administrator on 2016/5/27.
  * @Description  自定义swithchButton
- */`
+ */
+`
 
 `public class MySwitchButtonView extends View {`
 

@@ -28,50 +28,36 @@ description: know more, do better
  1.	移动圆移动的最大距离就是中间矩形的长 0<moveX<centerRectFWidth
  2.	需要知道cavas.scale(scale,scale,x,y)以（x,y）点作为中心缩放点。 关闭背景图有个缩放动画
  3.	手指按下的时候记录下按下的坐标，在移动的过程中，就会产生moveX，根据这个变化的moveX不停的刷新view,而view的刷新需要调用onDraw(cavas)方法,所以需要不停的invalidate()；
- 4.	手指抬起的时候分析：
- 	
- 		1、模拟点击，就是手指按下抬起（不考虑长按事件）基本没移动，这时候switchButton的开关状态改变，变为相反；
+ 4.	手指操作的时候分析：
+ 
+ >a模拟点击，就是手指按下抬起（不考虑长按事件）基本没移动,这时候switchButton的开关状态改变,变为相反;
 
- 		2、移动距离没有超过最大移动距离一半，我们这时认为状态改变不成功，即发生回弹效果
+ >b移动距离没有超过最大移动距离一半,我们这时认为状态改变不成功，即发生回弹效果;
 
-		3、移动距离超过最大移动距离的一半，我们认为开关状态改变成功。
+ >c移动距离超过最大移动距离的一半,我们认为开关状态改变成功;
 			
+
  	
 * 具体代码请看源码把。	
-	
 
-`package com.gaobei.views;`
+	`package com.gaobei.views;
 
-`import android.annotation.TargetApi;`
-`import android.content.Context;`
+	import android.annotation.TargetApi;
+	import android.content.Context;
+	import android.graphics.Canvas;
+	import android.graphics.Color;
+	import android.graphics.Paint;
+	import android.graphics.RectF;
+	import android.os.Build;
+	import android.util.AttributeSet;
+	import android.view.MotionEvent;
+	import android.view.View;
+	import android.view.animation.AccelerateInterpolator;
 
-`import android.graphics.Canvas;`
 
-`import android.graphics.Color;`
 
-`import android.graphics.Paint;`
-
-`import android.graphics.RectF;`
-
-`import android.os.Build;`
-
-`import android.util.AttributeSet;`
-
-`import android.view.MotionEvent;`
-
-`import android.view.View;`
-
-`import android.view.animation.AccelerateInterpolator;`
-
-`/**
- * Created by Administrator on 2016/5/27.
- * @Description  自定义swithchButton
- */
-`
-
-`public class MySwitchButtonView extends View {`
-
-	/**
+	public class MySwitchButtonView extends View {
+    /**
      * 打开状态背景的画笔
      */
     private Paint mOpenPaint;
@@ -189,7 +175,7 @@ description: know more, do better
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-	//        super.onSizeChanged(w, h, oldw, oldh)
+	//        super.onSizeChanged(w, h, oldw, oldh);
         mCircleRadius = h / 2;
         height = h;
         width = w;
@@ -339,7 +325,8 @@ description: know more, do better
     public interface OnStateChangeListener {
         void onStateChangeListener(View view, boolean isOpen);
     }
+}
+`
 
-`}`
 
 

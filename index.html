@@ -51,23 +51,14 @@ layout: home
 
     function geturl() {
         var all = [
+            "http://GSven.github.io/images/meinv.jpg",
 			"http://cdn.abowman.com/widgets/hamster/hamster.swf?"
-            "http://litaotao.github.io/images/cover_2.jpg",
-            "http://litaotao.github.io/images/cover_3.jpg",
-            "http://litaotao.github.io/images/cover_5.jpg",
-            "http://litaotao.github.io/images/cover_6.jpg",
-            "http://litaotao.github.io/images/cover_7.jpg",
-            "http://litaotao.github.io/images/cover_8.jpg",
-            "http://litaotao.github.io/images/cover_9.jpg",
-            "http://litaotao.github.io/images/cover_10.jpg",
-            "http://litaotao.github.io/images/cover_11.jpg",
-            "http://litaotao.github.io/images/cover_12.jpg",
         ];
         // 背景图片轮换方式，每小时一换，增加 cache 命中率，加快访问速度；
         // var index = new Date().getHours() % all.length;
         // return all[index];
-        //return all[Math.floor((Math.random() * all.length))];
-		return all[1];
+        return all[Math.floor((Math.random() * all.length))];
+		//return all[1];
     }
     $(function(){
         $('div#avatar').transition({ scale: 2.5 }).transition({ opacity: 1, scale: 1 }, 800, 'ease');

@@ -1,0 +1,446 @@
+api day 1
+
+  https://developer.android.com/guide/topics/resources/animation-resource.html
+  在天朝google比较困难，所以推荐一个可以访问的地址：
+  http://androiddoc.qiniudn.com/guide/topics/resources/animation-resource.html
+
+  动画
+ 翻译部分api:
+  An animation resource can define one of two types of animations:
+  一个animation资源可以定义为两种动画类型之一：
+  1：Property Animation：（属性动画）
+	在设定的时间内，通过修改对象的属性来创建动画
+  2：View Animation:（视图动画,控件动画）
+	 有两种：a:tween animations（补间动画）,执行一系列单个图片的转换的动画
+		 b:frame animations（帧动画）,展示有序的图片变化动画
+
+  属性动画：
+  定义在xml文件中，通过修改目标对象的属性，比如背景色，透明度等在指定的时间内。
+
+  文件位置：
+  res/animator/filename.xml
+
+  编辑资源数据类型：
+  ValueAnimator ,ObjectAnimator,AnimatiorSet
+
+  如何引用：
+  
+  java：R.animator.filename;
+  xml:  @[package]animator/filename;
+ 
+  语法：
+  <set
+  android:ordering=["together" | "sequentially"]>
+
+    <objectAnimator
+        android:propertyName="string"
+        android:duration="int"
+        android:valueFrom="float | int | color"
+        android:valueTo="float | int | color"
+        android:startOffset="int"
+        android:repeatCount="int"
+        android:repeatMode=["repeat" | "reverse"]
+        android:valueType=["intType" | "floatType"]/>
+
+    <animator
+        android:duration="int"
+        android:valueFrom="float | int | color"
+        android:valueTo="float | int | color"
+        android:startOffset="int"
+        android:repeatCount="int"
+        android:repeatMode=["repeat" | "reverse"]
+        android:valueType=["intType" | "floatType"]/>
+
+    <set>
+        ...
+    </set>
+</set>
+
+这个xml文件必须有一个<set>,<ObjectAnimator>,<valueAnimator>三者之一的根元素，你也可以将这些动画集放在<set>标签中，<set>标签内部也是可以嵌套其他<set>标签元素
+
+元素要点：
+<set>
+可以装载<objctAnimator>,<valueAnimator>或者其他<set>标签的容器；java类：AnimatorSet
+	
+你可以设定<set>标签一组指定的动画，每一个<set>标签都有他自己的顺序
+	属性、参数：
+	android:ordering
+		1:sequentially:按照顺序播放动画
+		2:together:同一时间播放动画
+
+<objectAnimator>
+在特定的时间内，对对象的属性进行改变展示动画，java类：ObjectAnimator
+	属性、参数：
+	android:propertyName
+	String 类型；通过对象属性名称的引用，例如alpha,backgroundColor等。。。
+
+	android:valueTo
+	float,int ,color;属性动画结束，颜色表示的时候需要16进制表示例如#333333
+
+	android:valueFrom
+	float,int,color;属性动画的开始,同上
+
+	android:duration
+	int;动画持续时间
+	
+	android:startOffset
+	int;属性动画start()后被延迟多少时间展示动画
+
+	android:repeatCount
+	int；-1 表示无限重复展示动画。1表示重复一次，即动画总共展示两次。0表示重复0次，动画总共展示一次
+	
+	android:repeatMode
+	reverse、repeat
+
+	android:valueType
+	关键字；没理解！！！Keyword. Do not specify this attribute if the value is a color. The animation framework automatically handles color values 
+		intType
+		floatType（default）
+	
+<animator>
+在指定的时间内展示动画，参考java类：ValueAnimator
+	属性参数：
+	android:valueTo
+	float,int,color;动画结束的值，如果是颜色，则需要用到16进制表示如：#333333
+	android:valueFrom
+	同上
+	android:duration
+	同objectAnimator,默认是300ms
+	android:startOffset
+	int；动画被延迟多久后才开始展示
+	android:repeatCount
+	同objectAnimator属性
+	android:repeatMode
+	同objectAnimator属性
+	android:valueType
+	同objectAnimator属性
+
+例子：：
+xml文件res/animator/property_animator.xml
+	<set android:ordering="sequentially">
+	    <set>
+		<objectAnimator
+		    android:propertyName="x"
+		    android:duration="500"
+		    android:valueTo="400"
+		    android:valueType="intType"/>
+		<objectAnimator
+		    android:propertyName="y"
+		    android:duration="500"
+		    android:valueTo="300"
+		    android:valueType="intType"/>
+	    </set>
+	    <objectAnimator
+		android:propertyName="alpha"
+		android:duration="500"
+		android:valueTo="1f"/>
+	</set>
+想要使用上述动画xml文件，则需要AnimatorSet去加载这个文件，然后对需要展示动画的对象通过setTarget(object)绑定，代码如下
+	AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(myContext,
+	    R.anim.property_animator);
+	set.setTarget(myObject);
+	set.start();
+
+
+View Animation
+两种，一种tween,一种frame
+
+tween animation:
+通过xml资源文件展示动画，具体有alpha,rotating,fading ..
+
+文件位置：
+res/anim/filename.xml
+
+编辑资源数据类型：
+Animation
+
+资源文件引用：
+in java:R.anim.filename
+in xml : @[package]anim/filename
+
+语法：
+	<?xml version="1.0" encoding="utf-8"?>
+	<set xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:interpolator="@[package:]anim/interpolator_resource"
+	    android:shareInterpolator=["true" | "false"] >
+	    <alpha
+		android:fromAlpha="float"
+		android:toAlpha="float" />
+	    <scale
+		android:fromXScale="float"
+		android:toXScale="float"
+		android:fromYScale="float"
+		android:toYScale="float"
+		android:pivotX="float"
+		android:pivotY="float" />
+	    <translate
+		android:fromXDelta="float"
+		android:toXDelta="float"
+		android:fromYDelta="float"
+		android:toYDelta="float" />
+	    <rotate
+		android:fromDegrees="float"
+		android:toDegrees="float"
+		android:pivotX="float"
+		android:pivotY="float" />
+	    <set>
+		...
+	    </set>
+	</set>
+
+元素要点：
+<set>:
+是一个能够装载（<alpha>,<scale>,<tanslate>,<rotate>）或者其他<set>动画集；java代码：AnimationSet
+	属性、参数：
+	android:interpolator
+		插值器，这个值只能引用插值器的资源文件，而不是类名，他可以是由系统提供的默认插值器，也可以自己定义的插值器。了解更多请查看Interpolators这个类的文档介绍，后面在继续讲这个插值器。
+	android:shareinterpolator
+	Boolean类型：true,字节点都共同拥有父节点的插值器属性
+<alpha>
+一个淡入淡出动画;java代码：AlphaAnimation
+	属性，参数：
+	android:fromAlpha:
+	float类型；开始时透明度：0.0~1.0，从透明到不透明
+	android:toAlpha:
+	float类型，结束时透明度：同上
+	需要了解更多<alpha>这个标签属性，请参考Animation这个类的文档
+<scale>
+大小跳转动画。指定中心点进行缩放通过pivotX和pivotY这个两参数，例如0,0(左上角)，缩放的方向就是向右和向下；java代码：ScaleAnimation
+	属性，参数：
+	android:fromXScale
+	float类型：开始的x坐标，1.0表示不变
+	android:toXScale
+	同上
+	android:fromYScale
+	float类型：开始的y坐标，1.0表示不变
+	android:toYScale
+	同上
+	android:pivotX:
+	缩放中心点的位置，（50，50%，50%p）50表示相对控件的左上角x轴50dp位置开始缩放，50%，坐标原点加上相对自身view宽度的一半位置开始缩放，50%p坐标原点加上相对于父容器宽度的一半位置开始缩放。
+	android:pivotY:
+	同上
+	了解更多请参考Animation类
+<translate>
+一个横向和纵向的移动动画，支持以下三种参数类型：50,50%,50%p意义与<scale>标签中的piovtX同解。java参考类：TranslateAnimation
+	android:fromXDelta
+	android:toXDelta
+	android:fromYDelta
+	android:toYDelta
+	了解更多参考Animation类
+<rotate>
+旋转动画，java参考类：RotateAnimation
+	属性、参数：
+	android:fromDegrees
+	float类型，开始旋转的角度
+	android:toDegrees
+	结束旋转的角度
+	android:pivotX
+	旋转中心点的x位置
+	android:pivotY
+	选择中心点的y位置
+
+examples:
+文件保存在res/anim/hyperspace_jump.xml
+	<set xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:shareInterpolator="false">
+	    <scale
+		android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+		android:fromXScale="1.0"
+		android:toXScale="1.4"
+		android:fromYScale="1.0"
+		android:toYScale="0.6"
+		android:pivotX="50%"
+		android:pivotY="50%"
+		android:fillAfter="false"
+		android:duration="700" />
+	    <set
+		android:interpolator="@android:anim/accelerate_interpolator"
+		android:startOffset="700">
+		<scale
+		    android:fromXScale="1.4"
+		    android:toXScale="0.0"
+		    android:fromYScale="0.6"
+		    android:toYScale="0.0"
+		    android:pivotX="50%"
+		    android:pivotY="50%"
+		    android:duration="400" />
+		<rotate
+		    android:fromDegrees="0"
+		    android:toDegrees="-45"
+		    android:toYScale="0.0"
+		    android:pivotX="50%"
+		    android:pivotY="50%"
+		    android:duration="400" />
+	    </set>
+	</set>
+
+将上述动画代码应用到一个ImageView对象，并开始动画
+	ImageView image = (ImageView) findViewById(R.id.image);
+	Animation hyperspaceJump = AnimationUtils.loadAnimation(this, R.anim.hyperspace_jump);
+	image.startAnimation(hyperspaceJump);
+
+Interpolators:
+插值器这个先简单介绍，详细内容后面单独说明：
+
+插值器是一个影响动画速度的修饰符，允许动画加速，减速，回弹，重复等待。。
+xml中的属性是android:interpolator,默认插值器属性列表如下：
+
+Interpolator class			Resource ID
+AccelerateDecelerateInterpolator 	@android:anim/accelerate_decelerate_interpolator
+AccelerateInterpolator			@android:anim/accelerate_interpolator
+AnticipateInterpolator 			@android:anim/anticipate_interpolator
+AnticipateOvershootInterpolator 	@android:anim/anticipate_overshoot_interpolator
+BounceInterpolator 			@android:anim/bounce_interpolator
+CycleInterpolator 			@android:anim/cycle_interpolator
+DecelerateInterpolator			@android:anim/decelerate_interpolator
+LinearInterpolator 			@android:anim/linear_interpolator
+OvershootInterpolator 			@android:anim/overshoot_interpolator
+
+使用说明：
+<set android:interpolator="@android:anim/accelerate_interpolator">
+    ...
+</set>
+
+Custom interpolators：自定义插值器
+如果并不满足上述列表中的插值器，我们可以自己自定义一个。例如我们可以调整加速插值器的速率AnticipateInterpolator，或者调整循环次数CycleInterpolator，为此我们需要在创建xml资源文件
+
+文件位置：
+res/anim/filename.xml
+filename被用做资源id
+
+编辑资源数据类型：
+资源指向指定的插值器
+
+资源引用
+in xml: @[package:]anim/filename
+
+语法：
+	<?xml version="1.0" encoding="utf-8"?>
+	<InterpolatorName xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:attribute_name="value"
+	    />
+
+如果不添加任何属性，则是系统默认提供的效果
+
+元素：
+注意每个插值器的自定义实现，在xml中都是小小写
+<accelerateDecelerateInterpolator>
+开始和结束速率慢，中间速率快
+<accelerateInterpolator>
+从开始到结束缓慢的加速
+	参数：
+	android:factor
+	float类型，速率默认是1
+<anticipateInterpolator>
+先后退然后前进
+	参数：
+	android:tension
+	float类型，拉力默认是2
+<anticipateOvershootInterpolator>
+先后退，然后急速超过目标位置，然后在停留在目标位置
+	参数：
+	android:tension
+	    Float. The amount of tension to apply (default is 2).
+	android:extraTension
+	    Float. The amount by which to multiply the tension (default is 1.5). 
+<bounceInterpolator>
+反弹结束时的变化
+<cycleInterpolator>
+按照正弦函数重复变化
+	参数：
+	android:cycles
+	inteter，默认是1
+<decelerateInterpolator>
+开始加速，逐渐递减
+	参数：
+	android:factor
+	衰减速率默认是1
+<linearInterpolator>
+线性变化
+<overshootInterpolator>
+加速超过目标值然后回弹回来
+	参数：
+	android:tension
+	float,默认是2
+
+examples:
+
+xml 文件保存位置；res/anim/my_overshoot_interpolator.xml
+
+	<?xml version="1.0" encoding="utf-8"?>
+	<overshootInterpolator xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:tension="7.0"
+	    />
+	   
+然后将此自定义插值器应用到动画中
+
+	<scale xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:interpolator="@anim/my_overshoot_interpolator"
+	    android:fromXScale="1.0"
+	    android:toXScale="3.0"
+	    android:fromYScale="1.0"
+	    android:toYScale="3.0"
+	    android:pivotX="50%"
+	    android:pivotY="50%"
+	    android:duration="700" />
+
+
+Frame animation(帧动画)：
+文件位置:res/drawable/filename.xml
+编辑资源类型：
+AnimationDrawable
+资源的引用：
+in java：R.drawable.filename
+in xml: @[package]drawable.filename
+
+语法：
+	
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+        android:oneshot=["true" | "false"] >
+        <item
+            android:drawable="@[package:]drawable/drawable_resource_name"
+            android:duration="integer" />
+    </animation-list>
+
+元素：
+<animation-list>：这必须是一个根节点,可以包含一个或者多个<item>
+	属性：
+	android:oneshot
+	boolean,true表示展现动画一次，false表示循环展示动画
+<item>
+	属性：
+	android:drawable
+	帧动画的图片
+	android:duration
+	动画持续的时间
+
+examples:
+xml文件：res/anim/rocket.xml
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+        android:oneshot="false">
+        <item android:drawable="@drawable/rocket_thrust1" android:duration="200" />
+        <item android:drawable="@drawable/rocket_thrust2" android:duration="200" />
+        <item android:drawable="@drawable/rocket_thrust3" android:duration="200" />
+    </animation-list>
+
+应用：
+    ImageView rocketImage = (ImageView) findViewById(R.id.rocket_image);
+    rocketImage.setBackgroundResource(R.drawable.rocket_thrust);
+    rocketAnimation = (AnimationDrawable) rocketImage.getBackground();
+    rocketAnimation.start();
+
+
+
+
+
+
+
+
+
+
+
+

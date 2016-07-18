@@ -5,7 +5,7 @@ title: 『 Android 』 自定义switchButton
 description: know more, do better 
 ---  
 
-# 自定义switchButton #
+## 自定义switchButton ##
 
 **good good study,day day up!**
 
@@ -30,11 +30,9 @@ description: know more, do better
  3.	手指按下的时候记录下按下的坐标，在移动的过程中，就会产生moveX，根据这个变化的moveX不停的刷新view,而view的刷新需要调用onDraw(cavas)方法,所以需要不停的invalidate()；
  4.	手指操作的时候分析：
 
->a模拟点击，就是手指按下抬起（不考虑长按事件）基本没移动,这时候switchButton的开关状态改变,变为相反;
- 
->b移动距离没有超过最大移动距离一半,我们这时认为状态改变不成功，即发生回弹效果;
- 
->c移动距离超过最大移动距离的一半,我们认为开关状态改变成功;
+> a模拟点击，就是手指按下抬起（不考虑长按事件）基本没移动,这时候switchButton的开关状态改变,变为相反;
+> b移动距离没有超过最大移动距离一半,我们这时认为状态改变不成功，即发生回弹效果; 
+> c移动距离超过最大移动距离的一半,我们认为开关状态改变成功;
 				
 * 具体代码请看源码把。	
 

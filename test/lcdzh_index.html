@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>联储证券软件下载</title>
+<link href="/softdown/css/common.css" rel="stylesheet">
+<link href="/softdown/css/style.css" rel="stylesheet">
+<link href="/softdown/css/animate.css" rel="stylesheet">
+<script src="/softdown/scripts/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+<div class="page">
+    <section class="main">
+		<div style="display:none;" id="jiantou">
+			<img src="/softdown/images/jiantou.png" width="100%">
+		</div>
+    	<div class="start_page">
+        	<div class="part_one">
+                <div class="top_logo"></div>
+             
+				<div style="text-align:center;width: 100%;">
+					<div class="down_btn">
+					 <a href="javascript:downloadAndroid()" id="a1">联储大智慧手机炒股</a>
+					</div>
+				</div>
+            </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+<script type="text/javascript">
+/* * 智能机浏览器版本信息 * */
+var browser = { 
+	versions: function() 
+	{ 
+		var u = navigator.userAgent, 
+		app = navigator.appVersion; 
+		return {
+			//移动终端浏览器版本信息 
+			trident: u.indexOf('Trident') > -1, //IE内核 
+			presto: u.indexOf('Presto') > -1, //opera内核 
+			webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核 
+			gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核 
+			mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), //是否为移动终端 
+			ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端 
+			android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器 
+			iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器 
+			iPad: u.indexOf('iPad') > -1, //是否iPad 
+			webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部 
+		}; 
+	}(), 
+	language: (navigator.browserLanguage || navigator.language).toLowerCase() 
+}
+
+function downloadAndroid(){
+	if(isWeiXin()){
+		$("#jiantou").slideDown();
+	}else{
+		window.location.href = "http://www.lczq.com/upload/software/dzh_lczq.apk";
+	}
+}
+function isWeiXin(){
+    var ua = window.navigator.userAgent.toLowerCase();
+    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        return true;
+    }else{
+        return false;
+    }
+}
+</script>
+</html>

@@ -1,80 +1,75 @@
----
-layout: home
----
-
-<div class="index-content blog">
-    <div class="section">
-        <div class="cate-bar">
-          <a href="{{ site.myblog.linkedin }}"><i class="icon-linkedin-sign icon-large"></i><span> Profile</span></a>
-          <a href="{{ site.myblog.github }}"><i class="icon-github icon-large"></i><span> Code</span></a>
-          <a href="{{ site.myblog.email }}"><i class="icon-envelope icon-large"></i><span> Mail</span></a>
-		  <!--个人简历-->
-          <!--<a class="hide-phone" href="http://litaotao.github.io/resume" target="_blank"><i class="icon-edit-sign icon-large"></i><span> Resume</span></a>-->
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>联储证券软件下载</title>
+<link href="/softdown/css/common.css" rel="stylesheet">
+<link href="/softdown/css/style.css" rel="stylesheet">
+<link href="/softdown/css/animate.css" rel="stylesheet">
+<script src="/softdown/scripts/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+<div class="page">
+    <section class="main">
+		<div style="display:none;" id="jiantou">
+			<img src="/softdown/images/jiantou.png" width="100%">
+		</div>
+    	<div class="start_page">
+        	<div class="part_one">
+                <div class="top_logo"></div>
+             
+				<div style="text-align:center;width: 100%;">
+					<div class="down_btn">
+					 <a href="javascript:downloadAndroid()" id="a1">联储大智慧手机炒股</a>
+					</div>
+				</div>
+            </div>
+            </div>
         </div>
-
-        <ul class="artical-list">
-        {% for post in site.posts %}
-            <li><div class="title-date">{{ post.date | date:"%Y-%m-%d" }}</div>
-                <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-                <div class="title-desc">{{ post.description }}</div>
-            </li>
-        {% endfor %}
-        </ul>
-    </div>
-
-	<!-- 添加统计功能start-->
-	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259272914'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1259272914%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));
-	</script>
-	<!-- 添加统计功能end-->
-
-    <script>
-      $(function() {
-        function geturl() {
-          var all = [ {{ site.myblog.coverimgs }} ];
-          return all[Math.floor((Math.random()*all.length))];
-        }
-        $('div#avatar').transition({ scale: 2.5 }).transition({ opacity: 1, scale: 1 }, 800, 'ease');
-      });
-    </script>
-    <div class="aside">
-      <div id="avatar" class="avatar circle" style="width: 150px; height: 150px; position: absolute; right: -75px; top: 75px; opacity: 0;">
-        <div class="center circle" style="margin-top: 4px; height: 142px; width: 142px; background-image: url('images/2.jpg')"></div>
-      </div> 
-
-    </div>
-	<!--添加主页swf-->
-	<script>
-	//<object type="application/x-shockwave-flash" style="outline:none;" data="http://cdn.abowman.com/widgets/hamster/hamster.swf?" width="300" height="225">
-	//<param name="movie" value="http://cdn.abowman.com/widgets/hamster/hamster.swf?"></param><param name="AllowScriptAccess" value="always"></param>
-	//<param name="wmode" value="opaque"></param>
-	//</object>
-
-
-
-    function geturl() {
-        var all = [
-			"http://GSven.github.io/images/hamster.swf",
-			"http://GSven.github.io/images/meinv.jpg"
-        ];
-        // 背景图片轮换方式，每小时一换，增加 cache 命中率，加快访问速度；
-        // var index = new Date().getHours() % all.length;
-        // return all[index];
-        return all[Math.floor((Math.random() * all.length))];
-		//return all[1];
-    }
-    $(function(){
-        $('div#avatar').transition({ scale: 2.5 }).transition({ opacity: 1, scale: 1 }, 800, 'ease');
-        photo_url = "background-image: url( " + geturl() + " )";
-        if (document.body.scrollWidth > 770) {
-            $('div.aside')[0].setAttribute("style", photo_url);
-        }
-    })
-    // 切换屏幕［横竖屏］ 时刷新页面；以免大屏图片到小屏依旧保存，体验太差
-    $( window ).resize(function() { 
-        // console.log("Screen Resized, refresh page start...");
-        location.reload(); 
-        // console.log("Screen Resized, refresh page done...");
-    });
-    </script>
-	
+    </section>
 </div>
+</body>
+<script type="text/javascript">
+/* * 智能机浏览器版本信息 * */
+var browser = { 
+	versions: function() 
+	{ 
+		var u = navigator.userAgent, 
+		app = navigator.appVersion; 
+		return {
+			//移动终端浏览器版本信息 
+			trident: u.indexOf('Trident') > -1, //IE内核 
+			presto: u.indexOf('Presto') > -1, //opera内核 
+			webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核 
+			gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核 
+			mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), //是否为移动终端 
+			ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端 
+			android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器 
+			iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器 
+			iPad: u.indexOf('iPad') > -1, //是否iPad 
+			webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部 
+		}; 
+	}(), 
+	language: (navigator.browserLanguage || navigator.language).toLowerCase() 
+}
+
+function downloadAndroid(){
+	if(isWeiXin()){
+		$("#jiantou").slideDown();
+	}else{
+		window.location.href = "http://www.lczq.com/upload/software/dzh_lczq.apk";
+	}
+}
+function isWeiXin(){
+    var ua = window.navigator.userAgent.toLowerCase();
+    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        return true;
+    }else{
+        return false;
+    }
+}
+</script>
+</html>
